@@ -17,6 +17,43 @@
 
 - The REST-API will then be available at `http://localhost:3000`. Use this in the [frontend](https://github.com/vitality-vis/frontend)/src/components/App.tsx file as the `baseUrl` variable.
 
+### Topic API configuration
+- GET /getTopics(): Returns all topics
+- POST /getRepresentativePapers(): Returns representative papers by Topic ID, Topic Keyword
+    ```json
+    {
+        "input_data": ["bias", "uncertainty"], // [list<Keyword>], [list<ID>] depending on the input_type below
+        "input_type": "Keyword", // Keyword, ID
+        "limit": 3, // any number less than the number of papers available.
+    }
+    ```
+    
+- POST /getSimilarTopicsByTopic(): Returns similar topics by topics
+    ```json
+    {
+        "input_data": [3, 4, 5], // [list<Keyword>], [list<ID>] depending on the input_type below
+        "input_type": "ID", // Keyword, ID
+        "limit": 3, // any number less than the number of papers available.
+    }
+    ```
+    
+- POST /getSimilarTopicsByPaper(): Returns similar topics by ID, Title
+    ```json
+    {
+        "input_data": ["An Intermittent Click Planning Model.", "Tool Extension in Human-Computer Interaction."], // [list<Title>], [list<ID>] depending on the input_type below
+    "input_type": "Title", // Title, ID
+    "limit": 3, // any number less than the number of papers available.
+    }
+    ```
+    
+- POST /getTopicsByKeyword(): Returns similar topics by Keywords
+    ```json
+    {
+        "input_data": ["VisUaLiSAtion"], // [list<Keywords>], case insensitive
+        "limit": 3, // any number, -1 for all
+    }
+    ```
+
 
 ### API configuration
 - GET /getPapers(): Returns all papers
