@@ -18,6 +18,7 @@
 - The REST-API will then be available at `http://localhost:3000`. Use this in the [frontend](https://github.com/vitality-vis/frontend)/src/components/App.tsx file as the `baseUrl` variable.
 
 ### Topic API configuration
+- GET /getPapers(): Returns all papers
 - GET /getTopics(): Returns all topics
 - POST /getRepresentativePapers(): Returns representative papers by Topic ID, Topic Keyword
     ```json
