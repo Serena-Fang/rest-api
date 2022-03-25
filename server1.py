@@ -56,27 +56,17 @@ def get_topics_by_topics(df, topic_ids, limit):
   return topic_list
 
 
-# @app.route('/getPapers', methods = ['GET'])
-# @cross_origin()
-# def get_papers():
-#     global df
-#     response = df.loc[:, ~df.columns.isin(restricted_column_list)].to_json(orient="records", default_handler=str)
-#     return Response(response)
-
 #newly add
 def load_topic_data():
     global client, docs, topic_df
 
     if config.data_source == "json":
         json_data = pd.read_json(config.raw_topicmodelling_json_datafile, orient="records")
-        topic_df_data = pd.DataFrame(json_data)
-        # df_data.dropna(subset=['Title', "Authors"], inplace=True)
-
+        print(json_data)
+        topic_df = pd.DataFrame(json_data)
     else:
         print("invalid config.data_source. Valid values are 'json', 'mongodb'")
         sys.exit()
-
-    topic_df = topic_df_data
 
 #newly add
 @app.route('/getTopics', methods = ['GET'])
