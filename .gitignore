@@ -1,6 +1,5 @@
+data/*.json
 venv/
 .DS_Store
 .pyc
 .idea
-data/final_data.json
-data/final_data_slice.json
